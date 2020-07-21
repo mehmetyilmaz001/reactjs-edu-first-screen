@@ -1,0 +1,21 @@
+
+$header-bg-color: #432D22;
+$header-border-color: #BE4C16;
+$header-txt-color: white;
+
+header{
+    padding: 10px;
+    color: $header-txt-color;
+    background-color: $header-bg-color;
+    border-bottom: solid 2px $header-border-color;
+    text-align: center;
+    font-weight: bold;
+}
+
+ul{
+    list-style: circle;
+    border: dashed 1px $header-border-color;
+    padding: 10px;
+
+    li{margin-bottom: 5px; color: $header-bg-color;}
+}

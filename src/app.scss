@@ -17,5 +17,29 @@ ul{
     border: dashed 1px $header-border-color;
     padding: 10px;
 
-    li{margin-bottom: 5px; color: $header-bg-color;}
+    li{
+        margin-bottom: 5px; color: $header-bg-color;
+        
+        button{
+            display: block;
+            border: none;
+            min-width: 150px;
+            text-align: left;
+            background-color: $header-bg-color;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+
+            &:hover{
+                background-color: $header-border-color;
+            }
+        }
+
+    }
+}
+
+.user-detail{
+    list-style: circle;
+    border: dashed 1px $header-border-color;
+    padding: 10px;
 }

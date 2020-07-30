@@ -1,19 +1,33 @@
 import React from 'react';
 import './app.scss';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
 import UserList from './pages/UserList';
 import UserDetail from './pages/UserDetail';
 
 
 function App() {
 
-  const [ selectedUser, setSelectedUser ] = React.useState(null);
-
   return (
     <div className="App">
-      <UserList onSelectUser={ (user) => setSelectedUser(user)} />
+      <Router>
+        <Switch>
+          
+          <Route path="/" exact>
+            <UserList />
+          </Route>
 
-      {selectedUser && <UserDetail user={selectedUser} />}
-      
+          <Route path="/user-detail/:name" exact>
+            <UserDetail />
+          </Route>
+
+        </Switch>
+      </Router>
     </div>
   );
 }

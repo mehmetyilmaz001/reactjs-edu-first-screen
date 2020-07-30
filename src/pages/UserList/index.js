@@ -1,8 +1,13 @@
 import React from 'react';
 import Header from '../../components/Header';
 import { users } from '../../data';
+import { useHistory } from 'react-router-dom'
 
-const UserList = (props) => {
+
+const UserList = () => {
+
+    let history = useHistory();
+
     return (
         <>
             <Header title="First Screen Application - Users" />
@@ -12,7 +17,7 @@ const UserList = (props) => {
                         users.map(i =>
                             <li>
                                 <button 
-                                    onClick={() => props.onSelectUser(i)}
+                                    onClick={() => history.push(`user-detail/${i.name}`)}
                                 >
                                     {i.name} {i.surname}
                                 </button>

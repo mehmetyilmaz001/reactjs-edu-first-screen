@@ -43,3 +43,15 @@ ul{
     border: dashed 1px $header-border-color;
     padding: 10px;
 }
+
+.content-holder{
+    display: flex;
+
+    .sidebar{
+        flex: 2;
+    }
+
+    .content{
+        flex: 8;
+    }
+}

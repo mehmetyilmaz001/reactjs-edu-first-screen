@@ -10,7 +10,6 @@ const UserList = () => {
 
     return (
         <>
-            <Header title="First Screen Application - Users" />
             <aside>
                 <ul>
                     {

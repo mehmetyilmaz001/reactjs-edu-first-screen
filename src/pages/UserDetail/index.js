@@ -10,7 +10,6 @@ const UserDetail = () => {
 
     return(
         <>
-        <Header title="User Detail" />
         <div className="user-detail">
             <b>Name: </b> {user.name} {user.surname} <br/>
             <b>Title: </b> {user.title} <br/>

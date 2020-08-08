@@ -4,4 +4,6 @@ export const users = [
     {name: "Semih", surname: "Yavuz", city: "Istanbul", title: "Sr. Backend Developer"},
     {name: "Yunus", surname: "Alğan", city: "Istanbul", title: "Fullstack Developer"},
     {name: "Erol", surname: "Ülgü", city: "Istanbul", title: "Analyst"},
+    {name: "Büşra Gizem", surname: "Güvensoy", city: "Istanbul", title: "Senior Analyst"},
+    {name: "Ceren", surname: "Çelik", city: "Istanbul", title: "Senior Application Consultant"},
 ];

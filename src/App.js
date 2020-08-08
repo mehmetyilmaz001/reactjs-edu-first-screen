@@ -9,6 +9,23 @@ import {
 
 import UserList from './pages/UserList';
 import UserDetail from './pages/UserDetail';
+import PublicLayout from './layouts/PublicLayout';
+
+
+const PublicRoute = ({ children, ...rest }) => {
+  return (
+    <Route
+    {...rest}
+    render={() =>
+      (
+        <PublicLayout>
+          {children}
+        </PublicLayout>
+      ) 
+    }
+  />
+  )
+}
 
 
 function App() {
@@ -18,13 +35,13 @@ function App() {
       <Router>
         <Switch>
           
-          <Route path="/" exact>
+          <PublicRoute path="/" exact>
             <UserList />
-          </Route>
+          </PublicRoute>
 
-          <Route path="/user-detail/:name" exact>
+          <PublicRoute path="/user-detail/:name" exact>
             <UserDetail />
-          </Route>
+          </PublicRoute>
 
         </Switch>
       </Router>

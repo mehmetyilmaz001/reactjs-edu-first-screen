@@ -49,6 +49,15 @@ ul{
 
     .sidebar{
         flex: 2;
+        margin-top: 8px;
+        background-color: $header-bg-color;
+        ul{
+            border: none;
+            a {
+                color: white;
+                text-decoration: none;
+            }
+        } 
     }
 
     .content{

@@ -1,12 +1,20 @@
 import React from 'react';
-import Header from '../../components/Header';
 import { users } from '../../data';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const UserDetail = () => {
 
     const { name } = useParams();
     const user = users.filter(f => f.name === name)[0];
+
+    const dispatch = useDispatch();
+    React.useEffect(() => {
+        dispatch({
+            type: "SET_PAGE_TITLE",
+            payload: `User Detail ${user.name}`
+        });
+    }, []);
 
     return(
         <>

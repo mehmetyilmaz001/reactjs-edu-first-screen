@@ -10,6 +10,8 @@ import {
 import UserList from './pages/UserList';
 import UserDetail from './pages/UserDetail';
 import PublicLayout from './layouts/PublicLayout';
+import { Provider } from 'react-redux';
+import store from './state/store';
 
 
 const PublicRoute = ({ children, ...rest }) => {
@@ -31,21 +33,23 @@ const PublicRoute = ({ children, ...rest }) => {
 function App() {
 
   return (
-    <div className="App">
-      <Router>
-        <Switch>
-          
-          <PublicRoute path="/" exact>
-            <UserList />
-          </PublicRoute>
+    <Provider store={store}>
+      <div className="App">
+        <Router>
+          <Switch>
+            
+            <PublicRoute path="/" exact>
+              <UserList />
+            </PublicRoute>
 
-          <PublicRoute path="/user-detail/:name" exact>
-            <UserDetail />
-          </PublicRoute>
+            <PublicRoute path="/user-detail/:name" exact>
+              <UserDetail />
+            </PublicRoute>
 
-        </Switch>
-      </Router>
-    </div>
+          </Switch>
+        </Router>
+      </div>
+    </Provider>
   );
 }
 

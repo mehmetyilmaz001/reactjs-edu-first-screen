@@ -1,12 +1,19 @@
 import React from 'react';
-import Header from '../../components/Header';
 import { users } from '../../data';
 import { useHistory } from 'react-router-dom'
-
+import { useDispatch } from 'react-redux';
 
 const UserList = () => {
 
     let history = useHistory();
+
+    const dispatch = useDispatch();
+    React.useEffect(() => {
+        dispatch({
+            type: "SET_PAGE_TITLE",
+            payload: "User List"
+        });
+    }, []);
 
     return (
         <>

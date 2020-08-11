@@ -13,6 +13,7 @@ const UserList = () => {
             type: "SET_PAGE_TITLE",
             payload: "User List"
         });
+        // eslint-disable-next-line
     }, []);
 
     return (

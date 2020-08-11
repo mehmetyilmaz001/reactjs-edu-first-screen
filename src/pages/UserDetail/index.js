@@ -14,6 +14,7 @@ const UserDetail = () => {
             type: "SET_PAGE_TITLE",
             payload: `User Detail ${user.name}`
         });
+        // eslint-disable-next-line
     }, []);
 
     return(

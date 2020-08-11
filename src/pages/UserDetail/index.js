@@ -8,14 +8,26 @@ const UserDetail = () => {
     const { name } = useParams();
     const user = users.filter(f => f.name === name)[0];
 
+    const [ title, setTitle ] = React.useState(`User Detail ${user.name}`);
+
+
     const dispatch = useDispatch();
+    
     React.useEffect(() => {
         dispatch({
             type: "SET_PAGE_TITLE",
-            payload: `User Detail ${user.name}`
+            payload: title
         });
-        // eslint-disable-next-line
+
+        
+    }, [title]);
+
+    React.useEffect(() => {
+        return () => {
+            alert("Detay sayfadan çıkıldı")
+        }
     }, []);
+
 
     return(
         <>
@@ -24,6 +36,15 @@ const UserDetail = () => {
             <b>Title: </b> {user.title} <br/>
             <b>City: </b> {user.city} <br/>
         </div>
+        <br />
+        <br />
+        <button onClick={() => setTitle("Title değişti")}>
+            Title'ı değiştir
+        </button>
+
+        <button onClick={() => setTitle(`User Detail ${user.name}`)}>
+            Title'ı eski haline geri getir
+        </button>
         </>
     );
 }

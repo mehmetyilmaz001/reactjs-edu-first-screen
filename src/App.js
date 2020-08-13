@@ -1,55 +1,82 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './app.scss';
 
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 
 import UserList from './pages/UserList';
 import UserDetail from './pages/UserDetail';
+import LoginPage from './pages/Login';
 import PublicLayout from './layouts/PublicLayout';
-import { Provider } from 'react-redux';
-import store from './state/store';
 
+import Intro from './components/Intro';
+import { useSelector } from 'react-redux';
 
-const PublicRoute = ({ children, ...rest }) => {
+const PublicRoute = ({ children, location, ...rest }) => {
+  
+  const user = useSelector(s => s.auth.authUser);
+
   return (
     <Route
-    {...rest}
-    render={() =>
-      (
-        <PublicLayout>
-          {children}
-        </PublicLayout>
-      ) 
-    }
-  />
+      {...rest}
+      render={() => {
+        
+        if (!user) {
+          return (
+            <Redirect
+              to={{
+                pathname: "/login",
+                state: { from: location }
+              }}
+            />
+          )
+        } else {
+          return <PublicLayout>
+            {children}
+          </PublicLayout>
+        }
+      }
+
+      }
+    />
   )
 }
 
-
 function App() {
 
+  const [ introLoaded, setIntroLoaded ] = useState(false);
+
+  if(!introLoaded){
+    return  <Intro onLoad={() => setIntroLoaded(true)} />
+  }
+
+
   return (
-    <Provider store={store}>
+    
       <div className="App">
         <Router>
           <Switch>
-            
+
             <PublicRoute path="/" exact>
               <UserList />
             </PublicRoute>
 
-            <PublicRoute path="/user-detail/:name" exact>
+            <PublicRoute path="/user-detail/:id" exact>
               <UserDetail />
             </PublicRoute>
+
+            <Route path="/login">
+              <LoginPage />
+            </Route>
 
           </Switch>
         </Router>
       </div>
-    </Provider>
+    
   );
 }
 
